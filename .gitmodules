@@ -1,0 +1,3 @@
+[submodule "AIP_Favourapp"]
+	path = AIP_Favourapp
+	url = https://github.com/ishaniwadhwana/AIP_Favourapp.git
