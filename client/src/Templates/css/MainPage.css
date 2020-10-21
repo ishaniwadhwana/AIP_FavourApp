@@ -1,0 +1,24 @@
+.main-navigation__title {
+    color: white;
+  }
+  
+  .main-navigation__title a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .main-navigation__header-nav {
+    display: none;
+    font-size: 12px;
+  }
+  
+  @media (min-width: 768px) {
+    .main-navigation__menu-btn {
+      display: none;
+    }
+  
+    .main-navigation__header-nav {
+      display: block;
+    }
+  }
+  
