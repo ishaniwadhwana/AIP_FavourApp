@@ -70,3 +70,58 @@ async (req, res) => {
     }
 });
 
+router.post("/borrower", auth, [
+    check("quantity", "Quantity should not be 0, Enter 1 or more ").isInt({ gt: 0, lt: 20}),
+],
+async (req, res) => {
+    const validationError  = validationResult(req);
+    if(!validationError.isEmpty()){
+        return res.status(400).json({error: validationError.array() });
+    }
+    try{
+        const favorTaskCom = await dbConnection.query(
+            `INSERT INTO favors (lenderid, borrowerid, requestid) values ($1, $2, $3) returning *`,
+            [req.body.lender, req.userid, req.body.requestid] 
+        );
+        res.status(200).json({status: "Succes", 
+            data: {
+                user : favorTaskCom.rows[0],
+            },
+        });
+    } catch (E){
+        res.status(500).send("server Error ");
+    }
+});
+
+router.post("/lender/complete/:favorid", async (req, res) => {
+    try{
+        const favorTaskCom = await dbConnection.query(
+            `UPDATE favors SET datecompleted=now() where favorid = $1 returning *`,
+            [req.params.favorid]
+        );
+
+        const partiesTask = await db.query(
+            `select partyId from favor_party
+             join favors on favor_party.favorid=favors.favorid
+             where favors.favorid=$1`,
+            [req.params.favorid]
+        );
+
+        if (partiesTask.rowCount !== 0){
+            await dbConnection.query(
+                `UPDATE party SET isactive=0 where partyid=$1 returning *`, 
+                [parties.rows[0].partyid]
+            );
+        }
+
+        res.status(200).json({
+            status: "Success",
+            data: {
+                user: favorTaskCom.rows[0],
+            },
+        });
+
+    }catch (E){
+        res.status(500).send("Server Error")
+    }
+});
