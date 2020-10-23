@@ -47,7 +47,7 @@ router.get("/users/:favorid", async (req, res) => {
     }
 });
 
-router.post("/lender", auth, [
+router.post("/lender", userAuth, [
     check("quantity", "Quantity should not be 0, Enter 1 or more ").isInt({ gt: 0, lt: 20}),
 ],
 async (req, res) => {
@@ -70,7 +70,7 @@ async (req, res) => {
     }
 });
 
-router.post("/borrower", auth, [
+router.post("/borrower", userAuth, [
     check("quantity", "Quantity should not be 0, Enter 1 or more ").isInt({ gt: 0, lt: 20}),
 ],
 async (req, res) => {

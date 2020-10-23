@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const dbConnection = require("../db_config/dbconfig");
 const bcryptJS = require("bcryptjs");
-const userAuth = require("../middleware/Auth");
+const { check , validationResult } = require ("express-validator");
 const uniCodeVald = require("../handler/unicodeValHandler");
 
 router.post("/",
