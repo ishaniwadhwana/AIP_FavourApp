@@ -1,6 +1,6 @@
 const express = require("express");
 const port = 9000;
-
+const cookieParser = require("cookie-parser");
 const dbConnection = require ("./db_config/dbconfig");
 
 
@@ -15,8 +15,14 @@ try{
 
 }
 
+// middleware init
+app.use(express.json({ extended: false }));
+app.use(cookieParser());
+
 
 app.get("/", (req, res) => res.send("Welcome to API"));
+app.get("/Auth/", require("./API/Auth"));
+app.get("/favorItems", require("./API/favorItems"));
 
 
 app.listen(port, () => console.log("express API is running on ", port));
