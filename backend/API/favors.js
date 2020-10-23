@@ -224,4 +224,8 @@ router.get("/users", async (req, res) => {
     }catch (E){
         res.status(500).send("server Error")
     }
-})
+});
+
+
+module.exports = router;
+
