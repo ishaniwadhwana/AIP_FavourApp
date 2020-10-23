@@ -125,3 +125,72 @@ router.post("/lender/complete/:favorid", async (req, res) => {
         res.status(500).send("Server Error")
     }
 });
+
+router.post("/borrower/complete/:favorid", async (req, res) => {
+    try{
+        const isPicUploaded = await dbConnection.query(
+            `select * from favors where favorid=$1 and photo is not null`,
+            [req.params.favorid]
+        );
+        if(isPicUploaded.rowCount === 0){
+            return res.status(400).json({ msg: "your submited pic is not uploaded"});
+        } 
+
+        const updateFavorTaskCom = await dbConnection.query(
+            `UPDATE favors SET datecompleted=now() where favorid = $1 returning *`,
+            [req.params.favorid]
+        );
+
+        const partiesTask = await dbConnection.query(
+            `select partyId from favor_party
+                join favors on favor_party.favorid=favors.favorid
+                where favors.favorid=$1`, 
+                [req.params.favorid]
+        );
+
+        if(partiesTask.rowCount !== 0){
+            await dbConnection.query(
+                `UPDATE party SET isactive=0 where partyid=$1 returning *`, [parties.rows[0].partyid]
+            );
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: {
+                user: updateFavorTaskCom.rows[0],
+            },
+        });
+    }catch(E){
+        res.status(500).send("server Error")
+    }
+});
+
+router.post("/:favorid/items", async (req, res) => {
+    try{
+        const newFavoritem = await dbConnection.query(
+            `INSERT INTO favor_item (favorid, itemID, quantity) values ($1, $2, $3) returning *`,
+            [req.params.favorid, req.body.task, req.body.quantity]
+        );
+        res.status(200).json({
+            status: "success",
+            data: {
+                user: newFavoritem.rows[0],
+            },
+        });
+
+    }catch(E){
+        res.status(500).send("server Error");
+    }
+});
+
+router.get("/items", async (req, res) => {
+    try{
+        const favorIn = await dbConnection.query(
+            `select * from favor_item order by favoritemid;`
+        );
+        res.status(200).json(favorIn.rows);
+    }catch(E){
+        res.status(500).send("Serrer Error");
+    }
+});
+
