@@ -194,3 +194,34 @@ router.get("/items", async (req, res) => {
     }
 });
 
+router.delete("/:favorid", async (req, res) => {
+    try{
+        await dbConnection.query(
+            `delete from favor_item where favorid=$1`, [req.params.favorid]
+        );
+        await dbConnection.query(
+            `delete from favor_party where favorid=$1`, [req.params.favorid]
+        );
+        await dbConnection.query(
+            `delete from favors where favorid=$1`, [req.params.favorid]
+        );
+        res.status(200).json({msg: "Favor is deleted"});
+
+    }catch (E){
+        if(E instanceof TypeError){
+            return res.status(404).json({msg: "Favor not found in database"});
+        }
+        res.status(500).send("server Error");
+    }
+});
+
+router.get("/users", async (req, res) => {
+    try{
+        const appUsers = await dbConnection.query(
+            `select DISTINCT userid, username from users WHERE NOT userid=$1 order by userid`, [req.userid]
+        );
+        res.status(200).json(appUsers.rows);
+    }catch (E){
+        res.status(500).send("server Error")
+    }
+})
