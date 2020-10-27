@@ -1,5 +1,5 @@
-# AIP_FavourApp
 
 
-This Backend repository contains the server side logic for Favor application
+
+This sub Backend repository contains the server side logic for Favor application
 
