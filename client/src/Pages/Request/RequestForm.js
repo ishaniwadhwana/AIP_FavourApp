@@ -2,10 +2,7 @@ import React, { useState, Fragment } from 'react'
 import axios from 'axios';
 import { withRouter, useHistory } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
-
-// import './RequestForm.css';
 import '../../handler/ButtonHandler';
-// import '../../../node_modules/react-notifications-component/dist/theme.css'
 
 const RequestForm = () => {
     const [formData, setFormData] = useState({
@@ -38,7 +35,6 @@ const RequestForm = () => {
 
             const newPostId = newPost.data.data.user.requestid
 
-            // Redirect to the Request detail page
             history.push(`/request/${newPostId}`);
 
         } catch (err) {

@@ -2,7 +2,6 @@ import React from 'react';
 import RequestListItem from './RequestListItem';
 
 const Requests = ({ requests, searchTerm }) => {
-
     return requests
         .filter(
             request =>

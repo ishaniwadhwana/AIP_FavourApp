@@ -3,7 +3,6 @@ import axios from 'axios';
 import pageHandler from "../../handler/PageHandler";
 import Requests from './Requests';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import './RequestList.css';
 
 const RequestList = () => {
 
@@ -17,8 +16,7 @@ const RequestList = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get('/api/requests'); // 
-                // console.log(res.data);
+                const res = await axios.get('/api/requests'); 
                 setRequests(res.data);
             } catch (err) {
                 console.error(err);
@@ -27,7 +25,6 @@ const RequestList = () => {
         fetchData();
     }, []);
 
-    // Get current requests
     const lastRequest = currentPage * requestsPerPage;
     const firstRequest = lastRequest - requestsPerPage;
     const currentList = requests.slice(firstRequest, lastRequest);

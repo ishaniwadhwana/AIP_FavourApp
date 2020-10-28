@@ -7,7 +7,6 @@ import { useParams, withRouter, useHistory } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 
 import Button from '../../handler/ButtonHandler';
-// import './Request.css';
 
 const Request = () => {
     const { id } = useParams();

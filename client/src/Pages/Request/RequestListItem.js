@@ -4,7 +4,6 @@ import RewardItemList from '../Reward/RewarditemList';
 import Button from '../../handler/ButtonHandler';
 
 const RequestListItem = ({ requestid, username, task, dateCreated }) => {
-
     return (
         <Fragment key={requestid}>
             <tr>
@@ -24,7 +23,5 @@ const RequestListItem = ({ requestid, username, task, dateCreated }) => {
 
         </Fragment>
     );
-
 }
-
 export default RequestListItem

@@ -3,34 +3,10 @@ import axios from 'axios';
 import { useParams, withRouter, useHistory } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 
-// import './RequestCompletion.css';
-// import '../../../node_modules/react-notifications-component/dist/theme.css'
-
 
 const RequestComplete = () => {
-    //This is the request id
+    //request id
     const { id } = useParams();
-
-    // Fetching logged in user id
-    // const [userId, setUserId] = useState('');
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         try {
-    //             const isUser = await axios.get(`/api/auth/check_login`).catch((err) => {
-    //                 console.error(err.message)
-    //                 console.log("User not logged in")
-    //                 // history.push(`/login_test`)
-    //             });
-    //             const user = isUser.data.data.userid
-    //             // console.log(user)
-    //             setUserId(user)
-
-    //         } catch (err) {
-    //             console.error(err);
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
 
     let history = useHistory();
     const [state, setState] = useState({

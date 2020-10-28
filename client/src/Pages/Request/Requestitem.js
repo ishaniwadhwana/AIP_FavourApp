@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react'
 import Moment from 'react-moment';
 
-// import './RequestItem.css';
-
-
 const RequestItem = ({ requestid, requester, task, dateCreated }) => {
     return (
         <Fragment>
