@@ -3,15 +3,11 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 
-// import './RewardForm.css';
-// import '../../../node_modules/react-notifications-component/dist/theme.css'
-
 const RewardForm = ({ setRewards }) => {
 
-    // Set state for item dropdown list
     const [items, setItems] = useState([]);
 
-    // Fetch item list from api
+    // Fetch list of items
     useEffect(() => {
         async function fetchData() {
             try {
@@ -30,10 +26,7 @@ const RewardForm = ({ setRewards }) => {
         <option key={item.itemid} value={item.itemid}>{item.itemname}</option>
     ))
 
-    // Get the parameters
     const { id } = useParams();
-
-    // Set state for form data
     const [formData, setFormData] = useState({
         itemid: 1,
         quantity: ''
@@ -60,7 +53,6 @@ const RewardForm = ({ setRewards }) => {
             }
             const body = JSON.stringify(newReward);
 
-            // Create a new rewards
             await axios.post(`/api/rewards/${id}`, body, config);
 
             const newList = await axios.get(`/api/rewards/${id}`);

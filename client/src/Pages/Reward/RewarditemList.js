@@ -1,8 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 
-// import './RewardItemList.css';
-
 const RewardItemList = (requestid) => {
 
     const id = requestid.requestid
@@ -14,8 +12,7 @@ const RewardItemList = (requestid) => {
             try {
                 const res = await axios.get(`/api/rewards/${id}/total`);
 
-                setRewards(res.data)
-                // console.log(res.data)	
+                setRewards(res.data)	
             } catch (err) {
                 console.error(err);
             }

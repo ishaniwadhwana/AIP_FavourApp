@@ -5,13 +5,10 @@ import RewardItem from './Rewarditem';
 import RewardForm from './RewardForm';
 import Pagination from '../../handler/PageHandler';
 
-// import './Rewards.css';
-
 const Rewards = ({ displayRewardsForm }) => {
     const { id } = useParams();
 
     const [rewards, setRewards] = useState([]);
-    // const [rewardCount, setRewordCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [rewardsPerPage] = useState(10);
     let [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -24,7 +21,6 @@ const Rewards = ({ displayRewardsForm }) => {
                 const res = await axios.get(`/api/rewards/${id}`);
 
                 setRewards(res.data)
-                // setRewordCount(res.data.length
 
             } catch (err) {
                 console.error(err);
@@ -40,12 +36,9 @@ const Rewards = ({ displayRewardsForm }) => {
         fetchData();
     }, [id, isLoggedIn]);
 
-    // Get current requests
     const lastReward = currentPage * rewardsPerPage;
     const firstReward = lastReward - rewardsPerPage;
     const currentList = rewards.slice(firstReward, lastReward);
-
-    // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
 

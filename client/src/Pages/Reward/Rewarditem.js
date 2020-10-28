@@ -3,8 +3,6 @@ import axios from 'axios';
 import { withRouter, useHistory } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 
-// import './RewardItem.css';
-
 const RewardItem = ({ rewardid, item, quantity, user, userid }) => {
     let history = useHistory();
     let [isLoggedIn, setIsLoggedIn] = useState(false)
