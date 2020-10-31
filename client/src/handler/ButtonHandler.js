@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
+// Reference: https://react-bootstrap.github.io/components/buttons/
+
 const Button = props => {
   if (props.href) {
     return (
@@ -15,6 +18,9 @@ const Button = props => {
       </a>
     );
   }
+   
+// Reference:  https://stackoverflow.com/questions/42463263/wrapping-a-react-router-link-in-an-html-button
+
   if (props.to) {
     return (
       <Link

@@ -7,6 +7,7 @@ const PageHandler = ({ itemsPerPage, totalItems, paginate }) => {
     for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
+    // Reference: https://stackoverflow.com/questions/58478167/adding-next-and-prev-buttons-using-react-js
 
     return (
         <Fragment>
