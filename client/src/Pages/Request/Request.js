@@ -10,17 +10,16 @@ import Button from '../../handler/ButtonHandler';
 
 const Request = () => {
     const { id } = useParams();
-
+    //below we have used Hooks to declare state variables inside a function component, and also update it (similar to this.setState)--Reference: https://reactjs.org/docs/hooks-state.html 
     const [request, setRequest] = useState('');
-
     const [displayRewardsForm, toggleRewardsForm] = useState(false);
-
     const [displayCompletionForm, toggleCompletionForm] = useState(false);
     let [isLoggedIn, setIsLoggedIn] = useState(false)
     const [userId, setUserId] = useState('');
 
     let history = useHistory();
 
+    //Reference: https://codesandbox.io/s/distracted-sky-d8qgn?file=/src/App.js
     useEffect(() => {
         async function fetchData() {
             try {
@@ -77,12 +76,12 @@ const Request = () => {
                     {isLoggedIn &&
                         <Button onClick={() => toggleRewardsForm(!displayRewardsForm)} type="button">
                             Click to add a reward
-                    </Button>}
+                        </Button>}
                     <div className="request-complete-btn">
                         {isLoggedIn &&
                             <Button onClick={() => toggleCompletionForm(!displayCompletionForm)} type="button">
                                 Complete the request!
-                        </Button>}
+                            </Button>}
                     </div>
                 </div>
                 {/* {displayCompletionForm && <RequestCompletion />} */}

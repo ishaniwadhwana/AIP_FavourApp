@@ -26,7 +26,7 @@ class Ranking extends React.Component {
               });
             }  catch (err) {
               console.error(err.message);
-          }
+            }
       }
 
 

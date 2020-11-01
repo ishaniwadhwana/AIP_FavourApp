@@ -4,15 +4,14 @@ import { withRouter, useHistory } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 import '../../handler/ButtonHandler';
 
+//Reference: https://linguinecode.com/post/how-to-get-form-data-on-submit-in-reactjs
 const RequestForm = () => {
     const [formData, setFormData] = useState({
         task: '',
     });
 
     let history = useHistory();
-
     const { task } = formData;
-
     const onChange = e =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 

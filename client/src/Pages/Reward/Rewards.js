@@ -36,6 +36,7 @@ const Rewards = ({ displayRewardsForm }) => {
         fetchData();
     }, [id, isLoggedIn]);
 
+    //displaying of the current rewards --Reference: https://imranhsayed.medium.com/simple-react-js-pagination-using-react-hooks-e58463ed191
     const lastReward = currentPage * rewardsPerPage;
     const firstReward = lastReward - rewardsPerPage;
     const currentList = rewards.slice(firstReward, lastReward);
@@ -67,6 +68,7 @@ const Rewards = ({ displayRewardsForm }) => {
                 </thead>
                 <tbody>{currentRewards}</tbody>
             </table>
+            {/* Reference: https://imranhsayed.medium.com/simple-react-js-pagination-using-react-hooks-e58463ed191 */}
             <Pagination
                 itemsPerPage={rewardsPerPage}
                 totalItems={rewards.length}

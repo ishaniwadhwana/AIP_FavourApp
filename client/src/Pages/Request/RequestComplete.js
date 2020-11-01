@@ -24,6 +24,7 @@ const RequestComplete = () => {
         e.preventDefault();
 
         try {
+            //Reference: https://www.codegrepper.com/code-examples/javascript/axios+file+upload
             const formData = new FormData();
             formData.append('photo', file);
             console.log("form data from react: ", file)
@@ -33,7 +34,6 @@ const RequestComplete = () => {
                 }
             };
             await axios.get(`/api/requests/${id}/completed`);
-
             await axios.post(`/api/file/request/${id}`, formData, config);
 
             await axios.post(`/api/requests/${id}`)

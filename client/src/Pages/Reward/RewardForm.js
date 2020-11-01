@@ -21,7 +21,7 @@ const RewardForm = ({ setRewards }) => {
         fetchData();
     }, []);
 
-    // Create dropdown list for items
+    // Create dropdown list for items --Reference: https://www.carlrippon.com/drop-down-data-binding-with-react-hooks/
     const itemList = items.map(item => (
         <option key={item.itemid} value={item.itemid}>{item.itemname}</option>
     ))
@@ -40,11 +40,11 @@ const RewardForm = ({ setRewards }) => {
     const onSubmit = async e => {
         e.preventDefault();
 
+        //Posting the rewards form into the database via calling the post method from rewards api--Reference: https://github.com/axios/axios/issues/86
         const newReward = {
             itemid,
             quantity
         }
-
         try {
             const config = {
                 headers: {
@@ -52,8 +52,8 @@ const RewardForm = ({ setRewards }) => {
                 }
             }
             const body = JSON.stringify(newReward);
-
             await axios.post(`/api/rewards/${id}`, body, config);
+
 
             const newList = await axios.get(`/api/rewards/${id}`);
 

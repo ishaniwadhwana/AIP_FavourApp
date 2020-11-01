@@ -25,11 +25,12 @@ const RequestList = () => {
         fetchData();
     }, []);
 
+    //displaying of the current requests --Reference: https://imranhsayed.medium.com/simple-react-js-pagination-using-react-hooks-e58463ed191
     const lastRequest = currentPage * requestsPerPage;
     const firstRequest = lastRequest - requestsPerPage;
     const currentList = requests.slice(firstRequest, lastRequest);
 
-    // Change page
+    // Change page --Reference: https://imranhsayed.medium.com/simple-react-js-pagination-using-react-hooks-e58463ed191
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const onChange = e => {
@@ -58,7 +59,8 @@ const RequestList = () => {
                         <Requests requests={currentList} searchTerm={searchTerm} />
                     </tbody>
                 </table>
-                <pageHandler
+                {/* Reference: https://imranhsayed.medium.com/simple-react-js-pagination-using-react-hooks-e58463ed191 */}
+                <Pagination
                     itemsPerPage={requestsPerPage}
                     totalItems={requests.length}
                     paginate={paginate} />
