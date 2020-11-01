@@ -3,6 +3,10 @@ import { withRouter, useHistory } from 'react-router-dom';
 
 // import "./Register.css";
 
+
+//Logs out the current user
+
+// Reference: https://serverless-stack.com/chapters/redirect-on-login-and-logout.html
 const Logout = async () => {
     let history = useHistory();
     try {

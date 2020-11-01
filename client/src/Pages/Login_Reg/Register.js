@@ -20,7 +20,10 @@ const Register = () => {
     let history = useHistory();
 
     const { username, email, passwords, passwordConfirm } = formData;
+    
     // Check if user is logged in.
+    // Reference: https://stackoverflow.com/questions/62493433/post-request-using-fetch-with-async-await-on-submit
+    const onSubmit = async e => {
     useEffect(() => {
         async function fetchData() {
             try {
@@ -65,7 +68,7 @@ const Register = () => {
 
                 await axios.post('/api/users', body, config);
 
-                // Login the new new user
+                // Login the new  user
                 const userInfo = {
                     'email': email,
                     'passwords': passwords
@@ -79,7 +82,7 @@ const Register = () => {
                 console.log(err.message)
 
                 // Display customised error message based on error title or message
-                // Need some work to re-structure the code
+              
                 const errorMsg = err.response.data.errors[0].msg
 
                 if (errorMsg.includes('email')) {

@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserprofileItem from "./userProfileitems";
-// import ProfileNavLinks from "../../shared/components/Navigation/ProfileNavLinks";
+
 import UserOwesStats from "./UserOwes";
 import PeopleOwes from "./otherOwes";
 import UserRequests from "./UserRequests";
 import RequestsAccepted from "./RequestsHandler";
 import History from "./History";
-// import PartyNotice from "../../party/components/PartyNotice";
-// import profileImg from '../../image/profile_default.jpg';
 
-// import PartyList from "../../party/components/PartyList";
-
-// import "./UserStatsNav.css";
 
 const Users = () => {
   const [loadedUser, setLoadedUser] = useState("");

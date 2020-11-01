@@ -9,9 +9,6 @@ import '../../../node_modules/react-notifications-component/dist/theme.css'
 import UserDetails from './UserDetails';
 import ItemDetails from './ItemDetails';
 
-//To-do list
-//Fix default button (maybe hide all ptions at start?)
-//Catch errors
 
 const CreateFavor = () => {
     const [formData, setFormData] = useState({
@@ -104,7 +101,7 @@ const CreateFavor = () => {
                     const newPost = await axios.post(`/api/favors/borrower`, body, config);
                     const newPostId = newPost.data.data.user.favorid
                     await axios.post(`/api/favors/${newPostId}/items`, body, config);
-                    //await axios.post(`/api/party/trigger`)
+                    
                     addNotification('Submission completed', 'Favor added', 'success');
                     history.goBack();
                 } catch (err) {

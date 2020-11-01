@@ -10,7 +10,7 @@ const UserDetails = () => {
 const [users, setUsers] = useState([]);
  
 
- //Todo - this could potentially be refactored ?
+
  useEffect(() => {
     async function getCharacters() {
         try {

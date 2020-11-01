@@ -17,7 +17,7 @@ const Login = () => {
     });
     let history = useHistory();
 
-    // Check if user is logged in.
+    // Check if user is logged in and Redirect the user if logged in successfull
     useEffect(() => {
         async function fetchData() {
             try {
@@ -30,7 +30,7 @@ const Login = () => {
         fetchData();
     }, []);
 
-    // Redirect if logged in
+    
     if (isLoggedIn) {
         return <Redirect to='/profile' />;
     }
@@ -40,7 +40,7 @@ const Login = () => {
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
+// Reference: https://stackoverflow.com/questions/62493433/post-request-using-fetch-with-async-await-on-submit
     const onSubmit = async e => {
         e.preventDefault();
         try {
@@ -62,6 +62,7 @@ const Login = () => {
             history.go(0);
             // setTimeout(() => { history.push('/profile'); }, 1000);
 
+            // throw an error if login details are incorrect
         } catch (err) {
             console.error(err);
             const errorTitle = err.response.data.errors[0].title;

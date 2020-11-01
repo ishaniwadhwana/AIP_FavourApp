@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../handler/ButtonHandler";
 import Pagination from "../../handler/PageHandler";
-// import "./UserStatsNav.css";
+
 
 const PeopleOwes = () => {
   const [loadFavorsLent, setFavorsLent] = useState([]);
