@@ -29,13 +29,13 @@ const Register = () => {
                 setIsLoggedIn(true)
             } catch (err) {
                 console.error(err);
-                // console.log(`user NOT logged in`);
+              
             }
         };
         fetchData();
     }, []);
 
-    // Redirect if logged in
+    // Redirect user if logged in
     if (isLoggedIn) {
         return <Redirect to='/profile' />;
     }
