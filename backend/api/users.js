@@ -4,7 +4,9 @@ const dbConnection = require("../db_config/dbconfig");
 const bcryptJS = require("bcryptjs");
 const { check , validationResult } = require ("express-validator");
 const uniCodeVald = require("../handler/unicodeValHandler");
-
+// check the usersname is valid or not
+// check if the password is matching or not..
+//check if the email is valid or not.
 router.post("/",
     [
       check("username", "Username is required").not().isEmpty(),

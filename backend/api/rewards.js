@@ -4,7 +4,7 @@ const dbConnection = require("../db_config/dbconfig");
 const { check , validationResult } = require ("express-validator");
 const userAuth = require("../middleware/Auth");
 
-
+// check for the reward; from users
 router.get("/:requestid", async (req, res) => {
     try {
       const userRewards = await dbConnection.query(
@@ -24,7 +24,7 @@ router.get("/:requestid", async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-
+// all rewards
   router.get("/:requestid/total", async (req, res) => {
     try {
       const totalRewards = await dbConnection.query(
