@@ -1,15 +1,15 @@
 const jwtToken = require('jsonwebtoken');
 const superSecret = 'superSecret';
 
-
+// middler to create a cookie token.
 module.exports = function (req, res, next) {
     try {
         const TokenCookie = req.cookies.jwt;
         if (TokenCookie) {
             // Check that the supplied JWT is:
-            // 1. In the correct format
-            // 2. Correctly signed with 'secret'
-            // 3. Not expired
+            // In the correct format
+            // Correctly signed with 'secret'
+            // check if Not expired
             let userID = jwtToken.verify(
                 req.cookies.jwt,
                 superSecret
