@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-//import Button from "../../shared/components/UIElements/Button";
+
 import PageHandler from "../../handler/PageHandler";
-// import "./UserStatsNav.css";
+
 
 const History = () => {
   const [loadPeoplePaidHistory, setPeoplePaidHistory] = useState([]);
@@ -12,7 +12,7 @@ const History = () => {
   const [currentPageOfUser, setCurrentPageOfUser] = useState(1);
   const [itemsPerPage] = useState(5);
 
-  // Getting the transaction history of the user
+ // Below is the code to Get the transaction history of the user
   useEffect(() => {
     async function fetchHistoryData() {
       try {
@@ -26,7 +26,7 @@ const History = () => {
     fetchHistoryData();
   }, []);
 
-  // Get history of favors people owe to user
+  // Below is the code to get history of favors user owes to people
   const lastPeopleHistory = currentPageOfPeople * itemsPerPage;
   const firstPeopleHistory = lastPeopleHistory - itemsPerPage;
   const currentListOfPeople = loadPeoplePaidHistory.slice(
@@ -34,14 +34,14 @@ const History = () => {
     lastPeopleHistory
   );
 
-  // Get history of favors user owes to people
+  // Below is the code to get history of favors user owes to people
   const lastUserHistory = currentPageOfUser * itemsPerPage;
   const firstUserHistory = lastUserHistory - itemsPerPage;
   const currentListOfUser = loadUserPaidHistory.slice(
     firstUserHistory,
     lastUserHistory
   );
-  // Change page
+   // Changing pages
   const paginationOfPeople = (pageNumber) => setCurrentPageOfPeople(pageNumber);
   const paginationOfUser = (pageNumber) => setCurrentPageOfUser(pageNumber);
 
@@ -51,6 +51,7 @@ const History = () => {
       {loadPeoplePaidHistory.length === 0 ? (
         <h4 className="message-history">No History Available</h4>
       ) : (
+         //Reference: https://reactjs.org/docs/fragments.html
         <Fragment>
           <div>
             <table className="stats">
@@ -70,11 +71,7 @@ const History = () => {
                       <td>
                         {item.quantity} x {item.itemname}
                       </td>
-                      {/* <td>
-                        <Button to={`/history/${item.favorid}`}>
-                          See More
-                        </Button>
-                      </td> */}
+                      {/}
                     </tr>
                   </tbody>
                 );
@@ -114,11 +111,7 @@ const History = () => {
                       <td>
                         {item.quantity} x {item.itemname}
                       </td>
-                      {/* <td>
-                        <Button to={`/history/${item.favorid}`}>
-                          See More
-                        </Button>
-                      </td> */}
+                      {}
                     </tr>
                   </tbody>
                 );

@@ -9,9 +9,6 @@ import '../../../node_modules/react-notifications-component/dist/theme.css'
 import UserDetails from './UserDetails';
 import ItemDetails from './ItemDetails';
 
-//To-do list
-//Fix default button (maybe hide all ptions at start?)
-//Catch errors
 
 const CreateFavor = () => {
     const [formData, setFormData] = useState({
@@ -29,7 +26,7 @@ const CreateFavor = () => {
     const { file } = state;
     //Checks that there's a file uploaded 
     const onUpload = e => {
-        // console.log(e.target.files.length)
+      
         if (e.target.files.length !== 0) {
             !e.target.files[0].name.match(/.(jpg|jpeg|png)$/i) || e.target.files[0].size >= 1000000 ?
                 addNotification('File failed', 'Only .png, .jpg and .jpeg format with less than 1mb allowed!', 'danger') :
@@ -60,7 +57,7 @@ const CreateFavor = () => {
             }
         }
         const body = JSON.stringify(newFavor);
-        //check the user type
+      //check the user type if he is a lender  Reference for file upload using multipart/ form data https://www.codegrepper.com/code-examples/javascript/axios+file+upload
         if (type === 'lender') {
             let check = { task, borrower, quantity }
             let errors = Object.values(check).some(o => o === '' || o === 'SELECT OPTION');
@@ -72,7 +69,7 @@ const CreateFavor = () => {
 
                         const photoFormData = new FormData();
                         photoFormData.append('photo', file);
-                        // console.log("form data from react: ", file)
+                        
                         const photoConfig = {
                             headers: {
                                 'content-type': 'multipart/form-data'
@@ -80,7 +77,7 @@ const CreateFavor = () => {
                         };
 
                         await axios.post(`/api/file/favor/${newPostId}`, photoFormData, photoConfig)
-                        //await axios.post(`/api/party/trigger`)
+                      
                         await axios.post(`/api/favors/${newPostId}/items`, body, config);
                         addNotification('Submission completed', 'Favor is successfully added!', 'success');
                         history.goBack();
@@ -104,7 +101,7 @@ const CreateFavor = () => {
                     const newPost = await axios.post(`/api/favors/borrower`, body, config);
                     const newPostId = newPost.data.data.user.favorid
                     await axios.post(`/api/favors/${newPostId}/items`, body, config);
-                    //await axios.post(`/api/party/trigger`)
+                    
                     addNotification('Submission completed', 'Favor added', 'success');
                     history.goBack();
                 } catch (err) {

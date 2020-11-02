@@ -55,7 +55,7 @@ const FavorCompletion = (props) => {
         "The favor has been completed! We have updated the favor",
         "success"
       );
-      //redirects to the profile page
+     //redirect user to the profile page
       history.push(`/profile`);
     } catch (err) {
       console.error(err);

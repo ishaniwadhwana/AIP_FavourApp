@@ -10,13 +10,11 @@ const UserDetails = () => {
 const [users, setUsers] = useState([]);
  
 
- //Todo - this could potentially be refactored ?
+
  useEffect(() => {
     async function getCharacters() {
         try {
-           // const favorItem = await fetch(`/api/favorItems`);
-           // const bodys = await favorItem.json();
-            //setItems(bodys.map(({ itemid, itemname }) => ({ label: itemname, value: itemid })));
+         
             const rawUser = await fetch(`/api/favors/users`);
             const users = await rawUser.json();
             setUsers(users.map(({ username, userid }) => ({ label: username, value: userid })));

@@ -5,7 +5,7 @@ const axios = require("axios");
 const PrivateRouteHandler = ({ component: Component, ...rest }) => {
 
     const [isLoggedIn, setLoggedIn] = useState(null);
-
+// Adding a private route to check if the user is logged in or not using async method
 
     async function checkLogin() {
         try {

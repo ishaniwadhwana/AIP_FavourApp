@@ -4,7 +4,7 @@ import axios from "axios";
 import Moment from "react-moment";
 import Button from "../../handler/ButtonHandler";
 import FavorCompletion from "./FavorCompletion";
-// import PartyList from "../../party/components/PartyList";
+
 import { addNotification } from "../../handler/AlertHandler";
 import Modal from "react-modal";
 
@@ -37,7 +37,7 @@ const UserFavorDetails = () => {
 
   return (
     <div className="favor-container">
-      {/* <PartyList /> */}
+      {}
       <Button to="/profile">Back to Profile</Button>
       <div className="favor-item">
         <h1>Favor: #{loadUserFavor.favorid}</h1>

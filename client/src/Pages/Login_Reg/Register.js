@@ -2,8 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter, useHistory, Redirect } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
-
-// import "./Register.css";
 import Button from '../../handler/ButtonHandler'
 import '../../../node_modules/react-notifications-component/dist/theme.css'
 
@@ -21,6 +19,7 @@ const Register = () => {
 
     const { username, email, passwords, passwordConfirm } = formData;
     // Check if user is logged in.
+    // Reference: https://stackoverflow.com/questions/62493433/post-request-using-fetch-with-async-await-on-submit
     useEffect(() => {
         async function fetchData() {
             try {
@@ -34,7 +33,7 @@ const Register = () => {
         fetchData();
     }, []);
 
-    // Redirect if logged in
+  // Redirect user if logged in
     if (isLoggedIn) {
         return <Redirect to='/profile' />;
     }
@@ -79,7 +78,6 @@ const Register = () => {
                 console.log(err.message)
 
                 // Display customised error message based on error title or message
-                // Need some work to re-structure the code
                 const errorMsg = err.response.data.errors[0].msg
 
                 if (errorMsg.includes('email')) {
