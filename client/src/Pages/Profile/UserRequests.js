@@ -3,7 +3,7 @@ import axios from "axios";
 import Button from "../../handler/ButtonHandler";
 import PageHandler from '../../handler/PageHandler';
 import RewardItemList from '../../Pages/Reward/RewarditemList';
-// import "./UserStatsNav.css";
+
 import { withRouter } from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ const UserRequests = () => {
       try {
         const response = await axios.get(`/api/profile/user/myRequests`);
         setMyRequests(response.data.data.request);
-        // console.log(response.data.data.request)
+       
       } catch (err) {
         console.error(err);
       }

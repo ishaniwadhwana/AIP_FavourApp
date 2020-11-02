@@ -4,7 +4,7 @@ import Avatar from "../../handler/profileHandler";
 import { Link } from "react-router-dom";
 
 import Button from "../../handler/ButtonHandler";
-// import "./UserProfileItem.css";
+
 
 //setting the user profile data
 const UserProfileItem = (props) => {
