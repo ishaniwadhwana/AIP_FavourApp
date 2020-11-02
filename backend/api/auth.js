@@ -5,12 +5,12 @@ const cookieHandler = require("cookie-parser");
 const bcryptjs = require("bcryptjs");
 
 router.use(cookieHandler());
+// key to encrypt the user password.
 const superSecret = "superSecret";
 
 const dbConnection = require("../db_config/dbconfig");
 
 //Login AUTH... POST request
-
 router.post("/login", async (req, res) => {
 
     // console.log("IN login.... ");
@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
 
 });
 
-//get reuest... 
+//check user is logged in or not.
 
 router.get("/isLoggedIn", (req, res) => {
     
@@ -87,6 +87,8 @@ router.get("/isLoggedIn", (req, res) => {
     }
 });
 
+
+// check user has submitted logout request or not.
 router.get("/logout", (req, res) => {
 
     try{
@@ -109,7 +111,7 @@ router.get("/logout", (req, res) => {
     }
 });
 
-
+// this is just a test run to check API.
 router.get("/Test", async (req, res) => res.send("this is Test Auth API and the default route"));
 
 
