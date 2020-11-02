@@ -4,6 +4,8 @@ const dbConnection = require("../db_config/dbconfig");
 const bcryptJS = require("bcryptjs");
 const userAuth = require("../middleware/Auth");
 
+
+// check user state
 router.get("/", async (req, res) => {
     try {
       const userProfiles = await dbConnection.query(`select * from users;`);
@@ -13,7 +15,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-
+// fetch the user from the table
   router.get("/user", userAuth, async (req, res) => {
     try {
       const userProfile = await dbConnection.query(`select * from users where userid=$1`, 
@@ -34,7 +36,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-
+// encryption of the password
   router.post("/user", userAuth, async (req, res) => {
     try {
       const userProfile = await dbConnection.query(`select * from users where userid=$1`, 
@@ -65,7 +67,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-
+// fetch the currect favors for the particular users
   router.get("/user/favors", userAuth, async (req, res) => {
     try {
       const userFavorLend = await dbConnection.query(`select * from favors where lenderId=$1`, 
@@ -107,7 +109,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-  
+  // check the requestes which is done by the users
   router.get("/user/myRequests", userAuth, async (req, res) => {
     try {
       const userRequest = await dbConnection.query(
@@ -134,7 +136,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-
+// check the history of the users
   router.get("/user/history", userAuth, async (req, res) => {
     try {
       const peoplePaid = await dbConnection.query(

@@ -3,6 +3,9 @@ const router = express.Router();
 const dbConnection = require("../db_config/dbconfig");
 const fileSystem = require("fs");
 
+// handle the file and save to proper folder.
+//this will also check the picture is in the correct formate or not. 
+// the following is for requested from the users
 router.get('/request/:requestid', async (req, res) => {
     try{
         if(!req.files || Object.keys(req.files).length === 0 ){
@@ -35,6 +38,9 @@ router.get('/request/:requestid', async (req, res) => {
     }
 });
 
+// handle the file and save to proper folder.
+//this will also check the picture is in the correct formate or not. 
+// the following is for requested from the users for favors
 router.get('/favor/:favorid', async (req, res) => {
     try{
         if(!req.files || Object.keys(req.files).length === 0 ){
