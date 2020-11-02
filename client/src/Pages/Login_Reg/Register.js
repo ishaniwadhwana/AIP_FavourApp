@@ -2,8 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter, useHistory, Redirect } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
-
-// import "./Register.css";
 import Button from '../../handler/ButtonHandler'
 import '../../../node_modules/react-notifications-component/dist/theme.css'
 

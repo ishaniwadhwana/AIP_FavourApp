@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import { addNotification } from "../../handler/AlertHandler";
 import Button from "../../handler/ButtonHandler";
 import FavorCompletion from "./FavorCompletion";
-// import PartyList from "../../party/components/PartyList";
+
 import Modal from "react-modal";
 
 import "./FavorDetails.css";
@@ -55,7 +55,7 @@ const PeopleFavorDetails = () => {
 
   return (
     <div className="favor-container">
-      {/* <PartyList /> */}
+      {}
       <Button to="/profile">Back to Profile</Button>
       <div className="favor-delete">
         <Button onClick={() => deleteFavor()}>Delete Favor</Button>

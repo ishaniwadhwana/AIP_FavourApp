@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { withRouter, useHistory } from 'react-router-dom';
 
-// import "./Register.css";
+
 
 
 //Logs out the current user

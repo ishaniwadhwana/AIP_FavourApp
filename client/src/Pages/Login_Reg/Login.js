@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter, useHistory, Redirect } from 'react-router-dom';
 import { addNotification } from '../../handler/AlertHandler';
 
-// import "./Register.css";
+
 import Button from '../../handler/ButtonHandler';
 
 
@@ -60,7 +60,7 @@ const Login = () => {
             await axios.post('/api/auth/login', body, config);
             addNotification("Login completed", "You have been successfully registered!", "success");
             history.go(0);
-            // setTimeout(() => { history.push('/profile'); }, 1000);
+          
 
             // throw an error if login details are incorrect
         } catch (err) {
