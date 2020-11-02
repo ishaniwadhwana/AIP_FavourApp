@@ -37,7 +37,7 @@ const Users = () => {
     fetchUser();
   }, []);
 
-  // const displayContent = <History />;
+ 
   const displayItem = (type) => {
     switch (type) {
       case "iowe":
@@ -62,13 +62,13 @@ const Users = () => {
 
   return (
     <React.Fragment>
-      {/* <PartyNotice /> */}
+      {}
       <div>
         <ul className="user-list">
           <UserprofileItem
             userid={loadedUser.userid}
             username={loadedUser.username}
-            // image={profileImg}
+            
             favors={loadCompletedFavors + " favors repaid"}
           />
         </ul>

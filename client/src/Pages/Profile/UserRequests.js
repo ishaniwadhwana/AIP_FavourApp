@@ -19,7 +19,7 @@ const UserRequests = () => {
       try {
         const response = await axios.get(`/api/profile/user/myRequests`);
         setMyRequests(response.data.data.request);
-        // console.log(response.data.data.request)
+      
       } catch (err) {
         console.error(err);
       }
