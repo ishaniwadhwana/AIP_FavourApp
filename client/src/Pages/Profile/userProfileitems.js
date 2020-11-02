@@ -10,15 +10,12 @@ import Button from "../../handler/ButtonHandler";
 const UserProfileItem = (props) => {
   return (
     <React.Fragment>
-      <li className="user-item">
+      <li className="list-group-item">
         <Card className="user-item__content">
           <Link to={`/${props.userid}/profile`}>
-            <div className="user-item__image">
-              <Avatar image={props.image} alt={props.username} />
-            </div>
           </Link>
-          <div className="user-item__info">{props.username}</div>
-          <div className="user-item__favors">{props.favors}</div>
+          <div className="list-group-item">{props.username}</div>
+          <div className="list-group-item">{props.favors}</div>
           <div className="button-items">
             <Button to="/create-favor">+ New Favor</Button>
             <Button to="/create-request">+ New Request</Button>

@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserprofileItem from "./userProfileitems";
-// import ProfileNavLinks from "../../shared/components/Navigation/ProfileNavLinks";
 import UserOwesStats from "./UserOwes";
 import PeopleOwes from "./otherOwes";
 import UserRequests from "./UserRequests";
 import RequestsAccepted from "./RequestsHandler";
 import History from "./History";
-// import PartyNotice from "../../party/components/PartyNotice";
-// import profileImg from '../../image/profile_default.jpg';
-
-// import PartyList from "../../party/components/PartyList";
-
-// import "./UserStatsNav.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Users = () => {
   const [loadedUser, setLoadedUser] = useState("");
@@ -67,38 +61,50 @@ const Users = () => {
 
   return (
     <React.Fragment>
-      {/* <PartyNotice /> */}
-      <div>
-        <ul className="user-list">
-          <UserprofileItem
+      <PartyNotice />
+
+<div className= "container">
+<div className="row">
+  <div className="col-sm-4">
+  <UserprofileItem
             userid={loadedUser.userid}
             username={loadedUser.username}
-            // image={profileImg}
+            image={profileImg}
             favors={loadCompletedFavors + " favors repaid"}
-          />
+    />
+  </div>
+  <div className="col-sm-4">
+    <div className="card">
+    <div className="card-body ">
+        <h5 className="card-title"></h5>
+        <ul className="list-group list-group-flush">
+        <li className = "list-group-item">
+            <button className = "btn btn-info" onClick={() => displayItem("iowe")}>I Owe</button>
+          </li>
+          <li className = "list-group-item"> 
+            <button className = "btn btn-info" onClick={() => displayItem("peopleowe")}>People Owe Me</button>
+          </li>
+          <li className = "list-group-item">
+            <button  className = "btn btn-info" onClick={() => displayItem("myRequests")}>My Requests</button>
+          </li>
+          <li className = "list-group-item">
+            <button className = "btn btn-info" onClick={() => displayItem("requestsAccepted")}>Request Accepted</button>
+          </li>
+          <li className = "list-group-item">
+            <button className = "btn btn-info" onClick={() => displayItem("history")}>History</button>
+          </li>
         </ul>
       </div>
-      <div>
-        <ul className="profile-navigation">
-          <li>
-            <button onClick={() => displayItem("iowe")}>What I Owe</button>
-          </li>
-          <li>
-            <button onClick={() => displayItem("peopleowe")}>What People Owe Me</button>
-          </li>
-          <li>
-            <button onClick={() => displayItem("myRequests")}>My Requests</button>
-          </li>
-          <li>
-            <button onClick={() => displayItem("requestsAccepted")}>Request Accepted</button>
-          </li>
-          <li>
-            <button onClick={() => displayItem("history")}>Transaction History</button>
-          </li>
-
-        </ul>
-        <div>{displayContent}</div>
+    </div>
+  </div>
+</div>
+</div>
+      
+      <div className = "container">
+        
+      {displayContent}
       </div>
+      
     </React.Fragment>
   );
 };
