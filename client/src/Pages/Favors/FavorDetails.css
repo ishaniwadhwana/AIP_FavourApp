@@ -1,0 +1,49 @@
+.favor-container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+.favor-delete {
+  float: right;
+  margin-right: -1rem;
+}
+
+.favor-item {
+  max-width: 1100px;
+  margin: auto;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid;
+  padding: 2rem;
+  text-align: center;
+}
+
+.favor-complete {
+  display: inline;
+}
+
+.favor-view {
+  display: inline;
+  margin-left: 41rem;
+}
+
+.image-container {
+  margin: auto;
+  width: 20%;
+}
+
+.image-container img {
+  margin-top: 2rem;
+  max-width: 120%;
+  max-height: 120%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 90%;
+  left: 45%;
+}
