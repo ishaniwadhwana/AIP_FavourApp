@@ -57,7 +57,7 @@ const CreateFavor = () => {
             }
         }
         const body = JSON.stringify(newFavor); 
-        //check the user type if he is a lender  Reference for ile upload using multipart/ form data https://www.codegrepper.com/code-examples/javascript/axios+file+upload
+        //check the user type if he is a lender  Reference for file upload using multipart/ form data https://www.codegrepper.com/code-examples/javascript/axios+file+upload
         if (type === 'lender') {
             let check = { task, borrower, quantity }
             let errors = Object.values(check).some(o => o === '' || o === 'SELECT OPTION');
