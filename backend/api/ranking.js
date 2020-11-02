@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const dbConnection = require("../db_config/dbconfig");
 var async = require("async");
-
+// check the ranking for top 10 users based on the trancation
 router.get("/", (req, res) => {
     var query1 = `SELECT u.username as User, 
     COUNT(*) as Total_Favors_Given

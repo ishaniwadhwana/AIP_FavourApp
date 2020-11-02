@@ -5,7 +5,7 @@ const { check , validationResult } = require ("express-validator");
 
 const userAuth = require("../middleware/Auth");
 const uniCodeVald = require("../handler/unicodeValHandler");
-
+// check the user request
 router.get("/", async (req, res) => {
     try {
         const userRequests = await dbConnection.query(
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
-
+// make request
 router.post("/", userAuth, [
     check("task", "Please include the description of the task").not().isEmpty(),
     check("task", "Task should be less than 250 characters in English").isLength({ max: 250 }),
@@ -58,7 +58,7 @@ router.post("/", userAuth, [
         res.status(500).send("Server Error");
     }
 });
-
+// check based on the user request id
 router.post("/:requestid", userAuth, async (req, res) => {
     try {
         let requester = await dbConnection.query(
@@ -82,7 +82,6 @@ router.post("/:requestid", userAuth, async (req, res) => {
               `UPDATE requests SET fullfillerid = $1, datefinished=now() where requestid = $2 returning *`,
               [req.userid, req.params.requestid]
             );
-            // console.log(completedRequest.rows[0]);
     
             res.status(200).json({
               status: "success",
@@ -100,7 +99,7 @@ router.post("/:requestid", userAuth, async (req, res) => {
         res.status(500).send("Server Error")
     }
 });
-
+// check for delete
 router.delete("/:requestid", userAuth, async (req, res) => {
     try {
       // Check if the user is the requester
@@ -108,8 +107,6 @@ router.delete("/:requestid", userAuth, async (req, res) => {
         `select requesterid from requests where requestid=$1`,
         [req.params.requestid]
       );
-      // console.log(requester.rows[0].requesterid)
-      // This is hard coded now. Need to change it using req.params.id after authentication is implemented
       // Requester can change the task
       if (requester.rows[0].requesterid != [req.userid]) {
         return res.status(401).json({ msg: "User not authorised" });
@@ -160,11 +157,11 @@ router.delete("/:requestid", userAuth, async (req, res) => {
       res.status(500).send("Server Error");
     }
   });
-
+// check the request is completed or not.
   router.get("/:requestid/completed", async (req, res) => {
     try {
       const userRequest = await dbConnection.query(
-        // @see   For setting itemid as task, which goes to Photo field, I think we shoudn't do it as it's confusing..
+        // For setting itemid as task, which goes to Photo field.
         `select requests.requestid as requestid, userid as borrower, fullfillerid as lender, itemid as task, quantity
               from requests 
               join rewards
@@ -172,7 +169,6 @@ router.delete("/:requestid", userAuth, async (req, res) => {
               where requests.requestid=$1`,
         [req.params.requestid]
       );
-      // console.log(request.rows)
       if (userRequest.rows.length === 0)
         return res.status(400).json({ msg: "Reward not found" });
   
