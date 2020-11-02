@@ -6,7 +6,7 @@ const userAuth = require("../middleware/Auth");
 const Events = require("events");
 const Emitter = new Events();
 
-
+// get items from favors table...
 router.get("/", async (req, res) => {
     try{
         const favorsIn = await dbConnection.query(`select * from favors;`);
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
         res.status(500).send("server Error");
     }
 });
-
+// favors:id from user profile to check about the favors own by other.
 router.get("/people/:favorid", async (req, res) => {
     try{
         const favor = await dbConnection.query(
@@ -31,7 +31,7 @@ router.get("/people/:favorid", async (req, res) => {
         res.status(500).send("server Error ");
     }
 });
-
+// favors:id from user profile to check about the favors own by user
 router.get("/users/:favorid", async (req, res) => {
     try{
         const favor = await dbConnection.query(
@@ -46,7 +46,7 @@ router.get("/users/:favorid", async (req, res) => {
         res.status(500).send("server Erro");
     }
 });
-
+// check the input... by users
 router.post("/lender", userAuth, [
     check("quantity", "Quantity should not be 0, Enter 1 or more ").isInt({ gt: 0, lt: 20}),
 ],
@@ -69,7 +69,7 @@ async (req, res) => {
         res.status(500).send("server Error ");
     }
 });
-
+// check the input by users on borrowers page. 
 router.post("/borrower", userAuth, [
     check("quantity", "Quantity should not be 0, Enter 1 or more ").isInt({ gt: 0, lt: 20}),
 ],
@@ -92,7 +92,7 @@ async (req, res) => {
         res.status(500).send("server Error ");
     }
 });
-
+// check if the favor is completed or not by users
 router.post("/lender/complete/:favorid", async (req, res) => {
     try{
         const favorTaskCom = await dbConnection.query(
@@ -125,7 +125,7 @@ router.post("/lender/complete/:favorid", async (req, res) => {
         res.status(500).send("Server Error")
     }
 });
-
+// check if the favor is completed or not by borrower..
 router.post("/borrower/complete/:favorid", async (req, res) => {
     try{
         const isPicUploaded = await dbConnection.query(
@@ -164,7 +164,7 @@ router.post("/borrower/complete/:favorid", async (req, res) => {
         res.status(500).send("server Error")
     }
 });
-
+// insert into the table for favor items
 router.post("/:favorid/items", async (req, res) => {
     try{
         const newFavoritem = await dbConnection.query(
@@ -183,6 +183,7 @@ router.post("/:favorid/items", async (req, res) => {
     }
 });
 
+// fetch the items from the table
 router.get("/items", async (req, res) => {
     try{
         const favorIn = await dbConnection.query(
@@ -193,7 +194,7 @@ router.get("/items", async (req, res) => {
         res.status(500).send("Serrer Error");
     }
 });
-
+// favor delete... 
 router.delete("/:favorid", async (req, res) => {
     try{
         await dbConnection.query(
@@ -214,7 +215,7 @@ router.delete("/:favorid", async (req, res) => {
         res.status(500).send("server Error");
     }
 });
-
+// fetch the users from the database
 router.get("/users", async (req, res) => {
     try{
         const appUsers = await dbConnection.query(

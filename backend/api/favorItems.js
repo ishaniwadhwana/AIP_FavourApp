@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
+//DBconnection
 const dbConnection = require("../db_config/dbconfig");
 
+// get favoritems.... from the database.
 router.get("/", async (req, res) => {
     try{
     const favor = await dbConnection.query(
