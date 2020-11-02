@@ -15,4 +15,4 @@ const BodyPage = () => {
 );
 }
 
-export default BodyPage;
+export default BodyPage; 

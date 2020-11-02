@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserprofileItem from "./userProfileitems";
+
 import UserOwesStats from "./UserOwes";
 import PeopleOwes from "./otherOwes";
 import UserRequests from "./UserRequests";
 import RequestsAccepted from "./RequestsHandler";
 import History from "./History";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const Users = () => {
   const [loadedUser, setLoadedUser] = useState("");
@@ -36,7 +38,7 @@ const Users = () => {
     fetchUser();
   }, []);
 
-  // const displayContent = <History />;
+ 
   const displayItem = (type) => {
     switch (type) {
       case "iowe":
